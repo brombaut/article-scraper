@@ -1,0 +1,44 @@
+{
+  "name": "article_scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/index.js",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix",
+    "test": "jest",
+    "watch": "jest --watch",
+    "coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brombaut/article_scraper.git"
+  },
+  "keywords": [],
+  "author": "Ben Rombaut",
+  "license": "ISC",
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/brombaut/article_scraper/issues"
+  },
+  "homepage": "https://github.com/brombaut/article_scraper#readme",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.6",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint": "^7.32.0",
+    "jest": "^27.1.0",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "node-html-parser": "^4.1.4",
+    "rimraf": "^3.0.2"
+  }
+}
