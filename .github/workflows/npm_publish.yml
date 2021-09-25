@@ -1,6 +1,8 @@
 name: Publish new version to NPM
 on:
   workflow_dispatch:
+    branches:
+      - main
     inputs:
       version_update_type:
         description: "SemVer update version type (patch, minor, or major)"
@@ -8,7 +10,7 @@ on:
         default: "patch"
 
 jobs:
-  say_hello:
+  my_publish:
     runs-on: ubuntu-latest
     steps:
       - run: |
