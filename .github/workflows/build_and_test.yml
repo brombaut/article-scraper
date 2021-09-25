@@ -1,5 +1,3 @@
-# .github/workflows/gh_pages_deploy.yml
-
 name: Build and Test
 on:
   push:
