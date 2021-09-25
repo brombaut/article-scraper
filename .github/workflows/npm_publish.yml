@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v2
         # with:
         #   token: ${{ secrets.GITHUB_TOKEN }}
+      - name: npm ci
+        run: npm ci
       - name: Bump npm version
         run: npm version ${{ github.event.inputs.version_update_type }}
       - name: Commit from action
