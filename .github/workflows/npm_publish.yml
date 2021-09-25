@@ -1,8 +1,6 @@
 name: Publish new version to NPM
 on:
   workflow_dispatch:
-    branches:
-      - main
     inputs:
       version_update_type:
         description: "SemVer update version type (patch, minor, or major)"
@@ -12,6 +10,20 @@ on:
 jobs:
   my_publish:
     runs-on: ubuntu-latest
+
     steps:
-      - run: |
-          echo "Hello ${{ github.event.inputs.version_update_type }}!"
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        # with:
+        #   token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create report file
+        run: date +%s > report.txt
+      - name: Commit report
+        run: |
+          git config --global user.name 'Ben Rombaut'
+          git config --global user.email 'rombaut.benj@gmail.com'
+          git commit -am "Automated report"
+          git push
+      # - run: |
+      #     echo "version_update_type = ${{ github.event.inputs.version_update_type }}"
+      #     echo "npm_token = ${{ github.event.inputs.version_update_type }}"
