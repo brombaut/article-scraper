@@ -9,6 +9,21 @@ describe('SiteScrapperDevDotTo', () => {
 
   const EXPECTED_MINUTE_READ = 7;
 
+  const EXPECTED_TAGS = [
+    {
+      name: '#advices',
+      href: 'https://dev.to/t/advices',
+      color: '',
+      backgroundColor: ''
+    },
+    {
+      name: '#career',
+      href: 'https://dev.to/t/career',
+      color: '#FFFFFF',
+      backgroundColor: '#2A2566'
+    }
+  ];
+
   let devScraper: SiteScrapper;
 
   beforeAll(async () => {
@@ -39,8 +54,7 @@ describe('SiteScrapperDevDotTo', () => {
   it('scrapes tags info', async () => {
     try {
       expect(devScraper.articleData().hasErrors()).toBeFalsy();
-
-      // expect(devScraper.articleData().minuteRead).toEqual(EXPECTED_MINUTE_READ);
+      expect(devScraper.articleData().tags).toEqual(EXPECTED_TAGS);
     } catch(e) {
       console.error(devScraper.articleData().errors);
       throw e;

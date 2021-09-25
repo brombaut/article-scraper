@@ -3,7 +3,7 @@ import { Tag } from "./ScrappedArticleData";
 import { SiteScrapper } from "./SiteScrapper";
 
 class SiteScrapperDevDotTo extends SiteScrapper {
-
+  private  _devToBaseUrl = "https://dev.to";
   protected scrapeTitle(): void {
     const query = '#main-title h1';
     try {
@@ -37,8 +37,39 @@ class SiteScrapperDevDotTo extends SiteScrapper {
       this._articleData.addError(estring);
     }
   }
-  protected scrapeTags(): Tag[] {
-    throw new Error("Method not implemented.");
+  protected scrapeTags(): void {
+    const query = '#main-title .spec__tags a';
+    try {
+      const tagEls = this.queryAllHtmlElement(query);
+      tagEls.forEach(te => {
+        const name = te.text.trim();
+        const relHref = te.attributes.href;
+        const href = `${this._devToBaseUrl}${relHref}`;
+        const stylesString: string = te.attributes.style || "";
+        const stylesArray: string[] = stylesString.split(";");
+        let color = "";
+        let backgroundColor = "";
+        stylesArray.forEach((styleString: string) => {
+          const [name, value] = styleString.split(":");
+          if (name === "color") {
+            color = value;
+          }
+          if (name === "background-color") {
+            backgroundColor = value;
+          }
+        });
+        const tagObject: Tag = {
+          name,
+          href,
+          color,
+          backgroundColor,
+        };
+        this._articleData.tags.push(tagObject);
+      });
+    } catch (e) {
+      const estring = `Could not find --title-- element that matches query: ${query}`;
+      this._articleData.addError(estring);
+    }
   }
 }
 

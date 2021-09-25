@@ -10,7 +10,7 @@
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
     "test": "jest",
-    "watch": "jest --watch",
+    "test-watch": "jest --watch",
     "coverage": "jest --coverage"
   },
   "repository": {
