@@ -1,8 +1,8 @@
 import { HTMLElement } from "node-html-parser";
-import { Tag } from "./ScrappedArticleData";
-import { SiteScrapper } from "./SiteScrapper";
+import { Tag } from "./ScrapedArticleData";
+import { SiteScraper } from "./SiteScraper";
 
-class SiteScrapperDevDotTo extends SiteScrapper {
+class SiteScraperDevDotTo extends SiteScraper {
   private  _devToBaseUrl = "https://dev.to";
   protected scrapeTitle(): void {
     const query = '#main-title h1';
@@ -73,4 +73,4 @@ class SiteScrapperDevDotTo extends SiteScrapper {
   }
 }
 
-export {SiteScrapperDevDotTo}
+export {SiteScraperDevDotTo}

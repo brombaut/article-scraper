@@ -6,7 +6,7 @@ interface Tag {
   backgroundColor: string;
 };
 
-class ScrappedArticleData {
+class ScrapedArticleData {
   title: string;
   minuteRead: number;
   tags: Tag[];
@@ -30,4 +30,4 @@ class ScrappedArticleData {
   }
 };
 
-export { Tag, ScrappedArticleData };
+export { Tag, ScrapedArticleData };

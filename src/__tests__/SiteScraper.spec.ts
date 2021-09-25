@@ -1,6 +1,6 @@
 import {RequestMakerAxios} from '../RequestMaker';
-import {SiteScrapper} from '../SiteScrapper';
-import {SiteScrapperDevDotTo} from '../SiteScrapperDevDotTo';
+import {SiteScraper} from '../SiteScraper';
+import {SiteScraperDevDotTo} from '../SiteScraperDevDotTo';
 
 describe('SiteScrapperDevDotTo', () => {
   const URL = 'https://dev.to/tris909/before-i-land-a-job-as-a-developer-mistakes-that-i-ve-made-by-learning-how-to-code-by-myself-j2k';
@@ -24,10 +24,10 @@ describe('SiteScrapperDevDotTo', () => {
     }
   ];
 
-  let devScraper: SiteScrapper;
+  let devScraper: SiteScraper;
 
   beforeAll(async () => {
-    devScraper = new SiteScrapperDevDotTo(URL, new RequestMakerAxios(URL));
+    devScraper = new SiteScraperDevDotTo(URL, new RequestMakerAxios(URL));
     await devScraper.scrapeArticleData();
   });
 
@@ -63,7 +63,7 @@ describe('SiteScrapperDevDotTo', () => {
 
   it('contains an error when elements are not found', async () => {
     const WRONG_URL = 'https://axios-http.com/docs/example';
-    const devScraper: SiteScrapper = new SiteScrapperDevDotTo(WRONG_URL, new RequestMakerAxios(WRONG_URL));
+    const devScraper: SiteScraper = new SiteScraperDevDotTo(WRONG_URL, new RequestMakerAxios(WRONG_URL));
     await devScraper.scrapeArticleData();
     expect(devScraper.articleData().hasErrors()).toBeTruthy();
   });
