@@ -22,7 +22,8 @@ jobs:
         run: |
           git config --global user.name 'Ben Rombaut'
           git config --global user.email 'rombaut.benj@gmail.com'
-          git commit -am "Automated report"
+          git add .
+          git commit -m "Automated report"
           git push
       # - run: |
       #     echo "version_update_type = ${{ github.event.inputs.version_update_type }}"
