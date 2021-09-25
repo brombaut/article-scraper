@@ -16,14 +16,14 @@ jobs:
         uses: actions/checkout@v2
         # with:
         #   token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create report file
-        run: date +%s > report.txt
-      - name: Commit report
+      - name: Bump npm version
+        run: npm version ${{ github.event.inputs.version_update_type }}"
+      - name: Commit from action
         run: |
           git config --global user.name 'Ben Rombaut'
           git config --global user.email 'rombaut.benj@gmail.com'
           git add .
-          git commit -m "Automated report"
+          git commit -m "Commit from action test"
           git push
       # - run: |
       #     echo "version_update_type = ${{ github.event.inputs.version_update_type }}"
