@@ -17,7 +17,7 @@ jobs:
         # with:
         #   token: ${{ secrets.GITHUB_TOKEN }}
       - name: Bump npm version
-        run: npm version ${{ github.event.inputs.version_update_type }}"
+        run: npm version ${{ github.event.inputs.version_update_type }}
       - name: Commit from action
         run: |
           git config --global user.name 'Ben Rombaut'
