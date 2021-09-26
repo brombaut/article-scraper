@@ -8,14 +8,11 @@ on:
         default: "patch"
 
 jobs:
-  my_publish:
+  publish_to_npm:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
-        # with:
-        #   token: ${{ secrets.GITHUB_TOKEN }}
       - name: Configure GitHub
         run: |
           git config --global user.name 'Ben Rombaut'
@@ -24,6 +21,13 @@ jobs:
         run: npm ci
       - name: Bump npm version
         run: npm version ${{ github.event.inputs.version_update_type }}
-      # - run: |
-      #     echo "version_update_type = ${{ github.event.inputs.version_update_type }}"
-      #     echo "npm_token = ${{ github.event.inputs.version_update_type }}"
+      # Setup .npmrc file to publish to npm
+      - name: Setup .npmrc
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - name: Publish npm version
+        run: |
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
