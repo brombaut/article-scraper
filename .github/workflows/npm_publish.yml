@@ -28,11 +28,10 @@ jobs:
           node-version: "16"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm whoami
-      - name: Publish npm version
-        run: |
-          npm whoami
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm whoami
+      # - name: Publish npm version
+      #   run: |
+      #     npm whoami
+      #     npm publish --access public
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
