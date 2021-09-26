@@ -11,24 +11,15 @@ jobs:
   publish_to_npm:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
-      - name: Configure GitHub
-        run: |
-          git config --global user.name 'Ben Rombaut'
-          git config --global user.email 'rombaut.benj@gmail.com'
-      - name: npm ci
-        run: npm ci
-      - name: Bump npm version
-        run: npm version ${{ github.event.inputs.version_update_type }}
-      # Setup .npmrc file to publish to npm
-      - name: Setup .npmrc
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+      - run: git config --global user.name 'Ben Rombaut'
+      - run: git config --global user.email 'rombaut.benj@gmail.com'
+      - run: npm ci
+      - run: npm version ${{ github.event.inputs.version_update_type }}
+      - uses: actions/setup-node@v2
         with:
           node-version: "16"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish npm version
-        run: npm whoami
+          registry-url: "https://registry.npmjs.org"
+      - run: npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
