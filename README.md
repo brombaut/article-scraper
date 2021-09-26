@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/brombaut/article-scraper/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/brombaut/article-scraper/actions/workflows/build_and_test.yml)
 [![npm](https://img.shields.io/npm/v/article_scraper)](https://www.npmjs.com/package/article_scraper)
+[![Codecov](https://img.shields.io/codecov/c/github/brombaut/article-scraper)](https://app.codecov.io/gh/brombaut/article-scraper)
 
 Package for scraping information from different article websites.
 
