@@ -1,5 +1,5 @@
 import { HTMLElement } from "node-html-parser";
-import { Tag } from "./ScrapedArticleData";
+import { Tag } from "./ArticleMetaData";
 import { SiteScraper } from "./SiteScraper";
 
 class SiteScraperDevDotTo extends SiteScraper {

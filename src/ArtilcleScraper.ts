@@ -1,11 +1,21 @@
+import { ArticleMetaData } from "./ArticleMetaData";
 import { SiteScraper } from "./SiteScraper";
+import { SiteScraperFactory } from "./SiteScraperFactory";
 
 class ArticleScraper {
-  constructor(private url: string) {
-
+  private siteScraper: SiteScraper;
+  constructor(url: string) {
+    this.siteScraper = new SiteScraperFactory(url).siteScraper();
   }
 
-  siteScrapperFactory(): SiteScraper {
-    throw new Error("Method not implemented.");
+  async scrape() {
+    await this.siteScraper.scrapeArticleData();
   }
+
+  articleMetaData(): ArticleMetaData {
+    return this.siteScraper.articleData();
+  }
+
 } 
+
+export { ArticleScraper };

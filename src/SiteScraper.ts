@@ -1,13 +1,13 @@
 import { RequestMaker } from "./RequestMaker";
-import { ScrapedArticleData } from "./ScrapedArticleData"
+import { ArticleMetaData } from "./ArticleMetaData"
 import { HTMLElement, parse } from 'node-html-parser';
 
 
 abstract class SiteScraper {
   private _requestMaker: RequestMaker;
-  protected _articleData: ScrapedArticleData;
+  protected _articleData: ArticleMetaData;
   constructor(url: string, requestMaker: RequestMaker) { 
-    this._articleData = new ScrapedArticleData(url);
+    this._articleData = new ArticleMetaData(url);
     this._requestMaker = requestMaker;
   }
 
@@ -18,7 +18,7 @@ abstract class SiteScraper {
     this.scrapeTags();
   }
 
-  public articleData(): ScrapedArticleData {
+  public articleData(): ArticleMetaData {
     return this._articleData;
   }
 
