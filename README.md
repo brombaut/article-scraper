@@ -24,7 +24,7 @@ For the latest version:
 </p>
 
 ```bash
-npm i article-tracker
+npm i article_scraper
 ```
 
 ## Usage
